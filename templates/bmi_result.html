@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Result</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .container {
+            width: 50%;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .result-info {
+            margin-bottom: 20px;
+        }
+        .result-info p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .bmi-category {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BMI Result</h1>
+    </header>
+    <div class="container">
+        <div class="result-info">
+            <p><strong>Weight:</strong> {{ bmi_record.weight }} kg</p>
+            <p><strong>Height:</strong> {{ bmi_record.height }} meters</p>
+            <p><strong>BMI:</strong> {{ bmi_record.bmi }}</p>
+            <p class="bmi-category">
+                <strong>BMI Category:</strong> 
+                {% if bmi_record.bmi < 18.5 %}
+                    Underweight
+                {% elif 18.5 <= bmi_record.bmi <= 24.9 %}
+                    Normal weight
+                {% elif 25 <= bmi_record.bmi <= 29.9 %}
+                    Overweight
+                {% else %}
+                    Obese
+                {% endif %}
+            </p>
+        </div>
+        <a href="{% url 'bmi_input' %}">Go Back</a>
+    </div>
+</body>
+</html>

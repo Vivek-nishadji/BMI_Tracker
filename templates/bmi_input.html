@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Tracker</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .container {
+            width: 50%;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .form-field {
+            margin-bottom: 15px;
+        }
+        .form-field label {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BMI Tracker</h1>
+    </header>
+    <div class="container">
+        <h2>Enter Your Details</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-field">
+                {{ form.weight.label }}<br>
+                {{ form.weight }}
+            </div>
+            <div class="form-field">
+                {{ form.height.label }}<br>
+                {{ form.height }}
+            </div>
+            <button type="submit">Calculate BMI</button>
+        </form>
+    </div>
+</body>
+</html>
